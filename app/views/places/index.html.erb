@@ -4,18 +4,18 @@
     </div>
 </div>
 <div class = "row">
-  <%if @current_user%>
-    <% for place in @places %>
-      <ul>
-        <a href="/places/<%= place.id %>" class= "btn btn-outline-dark py-2"><%= place.name %></a>
-      </ul>
-    <% end %>
-    <p>
+  <% for place in @places %>
+    <ul>
+      <a href="/places/<%= place.id %>" class= "btn btn-outline-dark py-2"><%= place.name %></a>
+    </ul>
+  <% end %>
+  <% if @current_user %>
+  <p>
     <a href="/places/new" class= "btn btn-primary ">New place</a>
-    </p>
+  </p>
   <% else %>
     <div class="col-4 py-3">
-      You must <a href="/sessions/new" class= "btn btn-outline-primary mx-1" >log in </a> or <a href="/users/new" class="btn btn-outline-primary mx-1"> sign up </a>to post
+      You must <a href="/sessions/new" class= "btn btn-outline-primary mx-1" >log in </a> or <a href="/users/new" class="btn btn-outline-primary mx-1"> sign up </a>to add places or post
     </div>
   <% end %>
 </div>
