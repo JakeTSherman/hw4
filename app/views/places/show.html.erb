@@ -9,21 +9,16 @@
   </div>
 </div>
 <div class="row">
-    <% for post in @place.posts %>
-      <% if @current_user.id = post.user_id%>
-        <div class="col-md-4">
-        <h3><%= post.title %></h3>
-        <h4><%= post.posted_on %></h4>
-        <p><%= post.description %></p>
-        <% if post.uploaded_image.attached? %>
-          <img src="<%=url_for(post.uploaded_image)%>" class="img-fluid">
-        <% end %>
-        </div>
-      <% else %>
-        <h3> Make your first post! </h3>
+  <% for post in @place.posts.where({user_id: "#{@current_user.id}"}) %>
+      <div class="col-md-4">
+      <h3><%= post.title %></h3>
+      <h4><%= post.posted_on %></h4>
+      <p><%= post.description %></p>
+      <% if post.uploaded_image.attached? %>
+        <img src="<%=url_for(post.uploaded_image)%>" class="img-fluid">
       <% end %>
-    <% end %>
-  
+      </div>
+  <% end %>
 </div>
 <div class="row">
   <div class="col-2 my-2">
